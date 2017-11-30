@@ -1,0 +1,239 @@
+
+html {
+
+    color: #222;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.4;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+ header{
+     position: absolute;
+ }
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+
+    color: #474fac;
+}
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.site_navigation_header a {
+    outline: none;
+    text-decoration: none !important;
+
+}
+.active {
+    background-color: lightblue;
+    font-weight: bold;
+    text-decoration: none;
+}
+div.boxes {
+
+    float: left;
+    width: 25%;
+    margin-right: 2%;
+    padding: 20px;
+    background: #eee;
+    box-sizing: border-box;
+    position: relative;
+    top: 300px;
+    left: -160px;
+    background-color:  #0098db;
+    height: 185px;
+
+}
+
+div.boxes3{
+    margin-right: 0;
+    float: left;
+    width: 25%;
+    padding: 20px;
+    background: #eee;
+    box-sizing: border-box;
+    position: relative;
+    top: 300px;
+    right: 160px;
+    background-color:  #ffa100;
+    height: 185px;
+
+
+}
+#box_student{
+   background-color:  #7ab800;
+}
+#Beruf_button{
+    margin-top: 28px;
+}
+
+#logo{
+    position: absolute;
+    top:-30px;
+    right:0px;
+    max-width: 20%;
+}
+#backgroundimage{
+    position: absolute;
+    max-width: 100%;
+    margin: auto;
+
+}
+.image {
+    position: relative;
+    top: 0px;
+    height: 587px;
+
+
+}
+
+h2 {
+    position: absolute;
+    top: 200px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+h2 span {
+    color: white;
+    font: bold 45px Helvetica, Sans-Serif;
+    letter-spacing: -1px;
+    background: rgb(0, 0, 0); /* fallback color */
+    background: rgba(0, 0, 0, 0.1);
+    padding-bottom: 10px;
+    margin-left: -400px;
+    top: -105px;
+    position: relative;
+}
+h1.title {
+    position: absolute;
+    top: 3px;
+    left: -370px;
+    font-family: 'Inconsolata', monospace;
+    font-weight: lighter;
+    font-size:25px;
+    color: #474fac;
+    word-spacing: -0.5rem;
+    margin:0px;
+}
+
+.site-header{
+    position: relative;
+    margin-top:30px;
+    margin-left: 400px;
+    height: 150px;
+
+}
+div.in_image{
+    position: relative;
+    margin-left: 200px;
+}
+#nav {
+
+    font-size:15px;
+    border-right:solid rgba(163, 152, 171, 0.52) 1px;
+    padding:8px;
+    margin:5px;
+
+}
+.site_navigation_header{
+    position: relative;
+    width:650px;
+    right: 200px;
+    font-size: 14px;
+
+
+}
+
+.site_navigation_header ul{
+    position: absolute;
+    top: -10px;
+    list-style-type: none;
+    margin: 0;
+    padding:0;
+    overflow: hidden;
+    width:300px;
+
+}
+.site_navigation_header li {
+    height: 36px;
+    float: left;
+    border-right:1px solid rgba(163, 152, 171, 0.52);
+}
+
+.site_navigation_header li:last-child {
+    border-right: none;
+}
+.site_navigation_header a {
+    margin-left: -5px;
+    margin-right: -7px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+
+
+}
+.site_navigation {
+    width:1365px;
+    position: absolute;
+    top: 100px;
+    left: -399px;
+
+}
+hr {
+    position:relative;
+    top :150px;
+    left: -400px;
+    background-color: rgba(163, 152, 171, 0.52);
+    color:rgba(198, 187, 206, 0.52);
+    border:rgba(198, 187, 206, 0.52);
+    height:1px;
+    width: 1440px;
+}
+body {margin: 0;}
+
+
+@media screen and (max-width: 600px){
+    ul.topnav li.right,
+    ul.topnav li {float: none;}
+
+}
+#footer_box{
+    width: 1440px;
+    height: 300px;
+    background-color: #aac3db;
+    opacity: 0.05;
+}
+
+
+
+
