@@ -1,20 +1,17 @@
+function initialize() {
+    var pyrmont = new google.maps.LatLng(-33.8665, 151.1956);
 
-function initMap() {
-    var uluru = {lat: 51.0234262, lng: 7.5695483};
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: uluru
-    });
-    var marker = new google.maps.Marker({
-        position: uluru,
-        map: map
+        center: pyrmont,
+        zoom: 15,
+        scrollwheel: false
     });
 
     // Specify location, radius and place types for your Places API search.
     var request = {
-        location: uluru,
-        radius: '500000',
-        types: ['store', 'airport', 'university']
+        location: pyrmont,
+        radius: '500',
+        types: ['store']
     };
 
     // Create the PlaceService and send the request.
@@ -36,13 +33,5 @@ function initMap() {
     });
 }
 
-window.onload = function() {
-    var startPos;
-    var geoSuccess = function(position) {
-        startPos = position;
-        console.log(startPos.coords.latitude);
-        console.log(startPos.coords.longitude);
-    };
-    navigator.geolocation.getCurrentPosition(geoSuccess);
-};
-
+// Run the initialize function when the window has finished loading.
+google.maps.event.addDomListener(window, 'load', initialize);
