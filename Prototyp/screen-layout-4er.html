@@ -12,6 +12,10 @@
 
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700" rel="stylesheet">
+    <!-- Google API map -->
+
+    <link rel="stylesheet" href="styles/map.css">
+
 </head>
 
 <body>
@@ -24,7 +28,11 @@
                 </div>
                 <div class="upper-content__right" data-trigger="fullscreen" data-content-upper>
                     <div class="screen__content tsl-fixed" draggable="true" data-trigger="fullscreenChild" data-screen-content>
-                        <div class="tsl-map" style="background-image: url(images/tsl/tsl-map.svg);"></div>
+                        <div  id="map">
+
+
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -128,5 +136,11 @@
     
     <!-- Verschiedene Layouts via Query String -->
     <script src="scripts/tesla-main-control.js"#></script>
+
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV92k8Qt0qH1bAQggTSKYy-9l4We2Ckwc&callback=initMap">
+    </script>
+    <script src="scripts/map.js"></script>
+
 
 </body>
