@@ -27,11 +27,7 @@
                 </div>
                 <div class="upper-content__right" data-trigger="fullscreen" data-content-upper>
                     <div class="screen__content tsl-fixed" draggable="true" data-trigger="fullscreenChild" data-screen-content>
-                        <div id="map">
-
-
-
-                        </div>
+                        <div id="map"></div>
                     </div>
                 </div>
             </div>
@@ -134,13 +130,26 @@
     <script src="scripts/tesla-layout-switch.js"></script>
     
     <!-- Verschiedene Layouts via Query String -->
-    <script src="scripts/tesla-main-control.js"#></script>
+    <script src="scripts/tesla-main-control.js"></script>
     <!-- Google API map -->
 
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV92k8Qt0qH1bAQggTSKYy-9l4We2Ckwc&callback=initMap">
+    <!-- Init places API https://developers.google.com/maps/documentation/javascript/places?hl=de&authuser=1 -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV92k8Qt0qH1bAQggTSKYy-9l4We2Ckwc&libraries=places"></script>
+
+    <script>
+        var map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: -34.397, lng: 150.644},
+                zoom: 8
+            });
+        }
     </script>
-    <script src="scripts/location.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV92k8Qt0qH1bAQggTSKYy-9l4We2Ckwc&callback=initMap"
+            async defer></script>
+
+    <script src="location.js"></script>
 
 
 </body>
