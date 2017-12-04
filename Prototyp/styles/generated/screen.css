@@ -6885,8 +6885,9 @@ body.scale--09 .screen {
   right: 0;
   bottom: 0;
   left: 0;
-  background-size: cover; }
-
+  /*background-size: cover; }
+  */
+}
 /* Screen Main Control Strip
 -----------------------------------------------------------------------------*/
 .top-area__main-control {
