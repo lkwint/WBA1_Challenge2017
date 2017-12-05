@@ -25,16 +25,16 @@
 <div id="map"></div>
 <div class="buttons">
     <!-- Colored raised button -->
-    <button onclick="getPlaces('pharmacy')" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+    <button onclick="clear_and_getPlaces('pharmacy')" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
         Aphotheke
 
     </button>
     <!-- Accent-colored raised button -->
-    <button onclick="getPlaces('gas_station')" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+    <button onclick="clear_and_getPlaces('gas_station')" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
         Tankestelle
     </button>
     <!-- Accent-colored raised button with ripple -->
-    <button onclick="getPlaces('restaurant')" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+    <button onclick="clear_and_getPlaces('restaurant')" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
         Restaraunt
     </button>
 
@@ -50,6 +50,7 @@
     var service;
     var infoWindow;
     var pos;
+    var markers = [];
 
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
@@ -113,7 +114,7 @@
 
     function clear_and_getPlaces(type) {
 
-
+        deleteMarkers();
         var pyrmont = new google.maps.LatLng(pos.lat,pos.lng);
 
         var request = {
@@ -160,6 +161,22 @@
             });
         });
     }
+
+    function clearMarkers() {
+        setMapOnAll(null);
+    }
+
+    function deleteMarkers() {
+        clearMarkers();
+        markers = [];
+    }
+    function setMapOnAll(map) {
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(map);
+        }
+    }
+
+
 
 
 </script>
