@@ -55,6 +55,7 @@
 
 
 </div>
+
 <script>
     // Note: This example requires that you consent to location sharing when
     // prompted by your browser. If you see the error "The Geolocation service
@@ -146,15 +147,16 @@
     }
 
     function addMarker(place) {
-        var marker = new google.maps.Marker({
+        var marker = new mapIcons.Marker({
             map: map,
             position: place.geometry.location,
             icon: {
-                url: 'https://developers.google.com/maps/documentation/javascript/images/circle.png',
-                anchor: new google.maps.Point(10, 10),
-                scaledSize: new google.maps.Size(10, 17),
-
-
+                //url: 'https://developers.google.com/maps/documentation/javascript/images/circle.png',
+                path: mapIcons.shapes.SQUARE_PIN,
+                fillColor: '#00CCBB',
+                fillOpacity: 1,
+                strokeColor: '',
+                strokeWeight: 0
             },
             map_icon_label: '<span class="map-icon map-icon-point-of-interest"></span>'
 
