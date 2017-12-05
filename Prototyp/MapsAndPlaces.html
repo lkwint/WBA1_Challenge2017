@@ -4,11 +4,14 @@
     <title>Simple Map</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <style>
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
         #map {
-            height: 100%;
+            height: 80%;
+            width:80%;
         }
         /* Optional: Makes the sample page fill the window. */
         html, body {
@@ -20,6 +23,23 @@
 </head>
 <body>
 <div id="map"></div>
+<div class="buttons">
+    <!-- Colored raised button -->
+    <button onclick="getPlaces('pharmacy')" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+        Aphotheke
+
+    </button>
+    <!-- Accent-colored raised button -->
+    <button onclick="getPlaces('gas_station')" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+        Tankestelle
+    </button>
+    <!-- Accent-colored raised button with ripple -->
+    <button onclick="getPlaces('restaurant')" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        Restaraunt
+    </button>
+
+
+</div>
 <script>
     // Note: This example requires that you consent to location sharing when
     // prompted by your browser. If you see the error "The Geolocation service
@@ -33,10 +53,12 @@
 
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: -34.397, lng: 150.644},
+            center: {lat: 51.16569, lng: 10.451526},
             zoom: 14
+
         });
-        //var infoWindow = new google.maps.InfoWindow({map: map});
+
+
 
         var marker = new google.maps.Marker({
                         map: map,
@@ -56,7 +78,7 @@
                 marker.setPosition(pos);
                 map.setCenter(pos);
 
-                getPlaces();
+//                getPlaces('gas_station');
 
             }, function() {
                 handleLocationError(true, infoWindow, map.getCenter());
@@ -73,15 +95,31 @@
             'Error: The Geolocation service failed.' :
             'Error: Your browser doesn\'t support geolocation.');
     }
-
-    function getPlaces() {
+//radius als parameter übergeben
+    function getPlaces(type) {
 
         var pyrmont = new google.maps.LatLng(pos.lat,pos.lng);
 
         var request = {
             location: pyrmont,
-            radius: '500',
-            types: ['store']
+            radius: 900,
+            types: [type]
+        };
+
+        service = new google.maps.places.PlacesService(map);
+        service.nearbySearch(request, callback);
+
+    }
+
+    function clear_and_getPlaces(type) {
+
+
+        var pyrmont = new google.maps.LatLng(pos.lat,pos.lng);
+
+        var request = {
+            location: pyrmont,
+            radius: 900,
+            types: [type]
         };
 
         service = new google.maps.places.PlacesService(map);
@@ -94,6 +132,7 @@
             console.error(status);
             return;
         }
+        console.log(results.length);
         for (var i = 0, result; result = results[i]; i++) {
             addMarker(result);
         }
@@ -128,5 +167,7 @@
         async defer></script>-->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV92k8Qt0qH1bAQggTSKYy-9l4We2Ckwc&libraries=places&callback=initMap"
         async defer></script>
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
 </body>
 </html>
