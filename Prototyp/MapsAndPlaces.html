@@ -147,6 +147,7 @@
     }
 
     function addMarker(place) {
+
         var marker = new mapIcons.Marker({
             map: map,
             position: place.geometry.location,
@@ -158,21 +159,18 @@
                 strokeColor: '',
                 strokeWeight: 0
             },
-            map_icon_label: '<span class="map-icon map-icon-point-of-interest"></span>'
+            map_icon_label: '<span class="map-icon map-icon-restaurant"></span>'
 
-//            icon: {
-//                //url: 'https://developers.google.com/maps/documentation/javascript/images/circle.png',
-//                anchor: new google.maps.Point(10, 10),
-//                scaledSize: new google.maps.Size(10, 17),
-//                //  path: SQUARE_PIN,
-//                fillColor: '#00CCBB',
-//                fillOpacity: 1,
-//                strokeColor: '',
-//                strokeWeight: 0
-//
-//            },
-//            map_icon_label: '<span class="map-icon map-icon-point-of-interest"></span>'
+
         });
+        var icon = null;
+        if(place='restaraunt'){
+            map_icon_label: '<span class="map-icon map-icon-restaurant"></span>'
+        }
+
+
+    }
+
 
         markers.push(marker);
 
