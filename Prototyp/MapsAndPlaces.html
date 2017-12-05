@@ -149,6 +149,12 @@
 
     function addMarker(place) {
 
+        var icon = null;
+        // types array contains restaurant ?
+        if(place.types.indexOf('restaurant') >= 0){
+            icon = '<span class="map-icon map-icon-restaurant"></span>';
+        }
+
         var marker = new mapIcons.Marker({
             map: map,
             position: place.geometry.location,
@@ -160,17 +166,9 @@
                 strokeColor: '',
                 strokeWeight: 0
             },
-            map_icon_label: '<span class="map-icon map-icon-restaurant"></span>'
-
+            map_icon_label: icon
 
         });
-        var icon = null;
-        if(place='restaraunt'){
-            map_icon_label: '<span class="map-icon map-icon-restaurant"></span>'
-        }
-
-
-    }
 
 
         markers.push(marker);
