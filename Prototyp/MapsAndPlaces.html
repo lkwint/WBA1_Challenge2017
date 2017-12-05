@@ -83,6 +83,7 @@
             title: 'Location found.'
         });
 
+
         infoWindow = new google.maps.InfoWindow();
 
         // Try HTML5 geolocation.
@@ -92,8 +93,8 @@
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
-
                 marker.setPosition(pos);
+                //marker.setPosition(pos);
                 map.setCenter(pos);
 
 //                getPlaces('gas_station');
@@ -105,6 +106,7 @@
             // Browser doesn't support Geolocation
             handleLocationError(false, infoWindow, map.getCenter());
         }
+
     }
 
     function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -154,13 +156,31 @@
         if(place.types.indexOf('restaurant') >= 0){
             icon = '<span class="map-icon map-icon-restaurant"></span>';
         }
+        if(place.types.indexOf('pharmacy') >= 0){
+            icon = '<span class="map-icon map-icon-health"></span>';
+        }
+        if(place.types.indexOf('gas_station') >= 0){
+            icon = '<span class="map-icon map-icon-gas-station"></span>';
+        }
+        if(place.types.indexOf('atm') >= 0){
+            icon = '<span class="map-icon map-icon-atm"></span>';
+        }
+        if(place.types.indexOf('shopping_mall') >= 0){
+            icon = '<span class="map-icon map-icon-shopping-mall"></span>';
+        }
+        if(place.types.indexOf('post_office') >= 0){
+            icon = '<span class="map-icon map-icon-post-office"></span>';
+        }
+
+
+
 
         var marker = new mapIcons.Marker({
             map: map,
             position: place.geometry.location,
             icon: {
                 //url: 'https://developers.google.com/maps/documentation/javascript/images/circle.png',
-                path: mapIcons.shapes.MAP_PIN,
+                path: mapIcons.shapes.ROUTE,
                 fillColor: '#00CCBB',
                 fillOpacity: 1,
                 strokeColor: '',
