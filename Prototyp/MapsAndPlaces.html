@@ -103,7 +103,7 @@
 
         var request = {
             location: pyrmont,
-            radius: 900,
+            radius: 2000,
             types: [type]
         };
 
@@ -115,16 +115,7 @@
     function clear_and_getPlaces(type) {
 
         deleteMarkers();
-        var pyrmont = new google.maps.LatLng(pos.lat,pos.lng);
-
-        var request = {
-            location: pyrmont,
-            radius: 900,
-            types: [type]
-        };
-
-        service = new google.maps.places.PlacesService(map);
-        service.nearbySearch(request, callback);
+        getPlaces(type);
 
     }
 
@@ -149,6 +140,8 @@
                 scaledSize: new google.maps.Size(10, 17)
             }
         });
+
+        markers.push(marker);
 
         google.maps.event.addListener(marker, 'click', function() {
             service.getDetails(place, function(result, status) {
