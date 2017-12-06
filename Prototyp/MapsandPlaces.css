@@ -1,0 +1,19 @@
+.icons{
+    position: absolute;
+    width: 400px;
+    height: 800px;
+    margin-left: 30px;
+
+}
+.icons_rechts{
+    position: relative;
+    left: 200px;
+    top: -100px;
+}
+
+.s_line_icons{
+    margin-bottom: -50px;
+}
+.f_line_icons{
+    margin-bottom: -50px;
+}
