@@ -52,10 +52,17 @@
     <button onclick="clear_and_getPlaces('atm')" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
         Geldautomat
     </button>
+    
+    <button onclick="calcRoute()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        Navigate
+    </button> 
 
+    <div>
+        holamundo
+    </div>
 
-</div>
-<script>
+    </div>
+    <script>
     // Note: This example requires that you consent to location sharing when
     // prompted by your browser. If you see the error "The Geolocation service
     // failed.", it means you probably did not give permission for the browser to
@@ -65,16 +72,30 @@
     var infoWindow;
     var pos;
     var markers = [];
+	var selectedMarkerPosition;
+
+    var directionsDisplay;
+    var directionsService;
+
     function initMap() {
+        //directionsDisplay = new google.maps.DirectionsRenderer();
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 51.16569, lng: 10.451526},
             zoom: 14
         });
+        //directionsDisplay.setMap(map);
         var marker = new google.maps.Marker({
                         map: map,
             title: 'Location found.'
         });
         infoWindow = new google.maps.InfoWindow();
+		
+		directionsDisplay = new google.maps.DirectionsRenderer({
+		          map: map
+		        });
+		
+		directionsService = new google.maps.DirectionsService()
+		
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
@@ -84,7 +105,7 @@
                 };
                 marker.setPosition(pos);
                 map.setCenter(pos);
-//                getPlaces('gas_station');
+
             }, function() {
                 handleLocationError(true, infoWindow, map.getCenter());
             });
@@ -93,6 +114,24 @@
             handleLocationError(false, infoWindow, map.getCenter());
         }
     }
+                
+    function calcRoute() {
+        //var selectedMode = document.getElementById('mode').value;
+        var request = {
+            origin: pos,
+            destination: selectedMarkerPosition,
+            // Note that Javascript allows us to access the constant
+            // using square brackets and a string value as its
+            // "property."
+            travelMode: 'DRIVING'
+        };
+        directionsService.route(request, function(response, status) {
+            if (status == 'OK') {
+                directionsDisplay.setDirections(response);
+            }
+        });
+    }
+
     function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
@@ -122,6 +161,7 @@
         console.log(results.length);
         for (var i = 0, result; result = results[i]; i++) {
             addMarker(result);
+            addToList(result);
         }
     }
     function addMarker(place) {
@@ -142,16 +182,38 @@
                     return;
                 }
 
-                var open = "Closed now";
+                var open = "Closed";
                 if (result.opening_hours.open_now)
-                    open = "Open now";
+                    open = "Open";
+
+                var price;
+                switch(result.price_level) {
+                    case 0:
+                        price = "Free";
+                        break;
+                    case 1:
+                        price = "Inexpensive";
+                        break; 
+                    case 2:
+                        price = "Moderate";
+                        break;
+                    case 3:
+                        price = "Expensive";
+                        break; 
+                    case 4:
+                        price = "Very Expensive";
+                        break;
+                }
+                
+                var marker_selected = result.geometry.location;
 
                 var datails = 'Name: ' + result.name + '</br>' +
                               'Address: ' + result.formatted_address + '</br>' +
-                              'Phone Number: ' + result.formatted_phone_number + '</br>' + open;
+                              'Phone Number: ' + result.formatted_phone_number + '</br>' + open + '</br>' + price;
 
                 infoWindow.setContent(datails);
                 infoWindow.open(map, marker);
+				selectedMarkerPosition = result.geometry.location;
             });
         });
     }
@@ -167,6 +229,9 @@
             markers[i].setMap(map);
         }
     }
+    
+
+
 </script>
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV92k8Qt0qH1bAQggTSKYy-9l4We2Ckwc&callback=initMap"
         async defer></script>-->
