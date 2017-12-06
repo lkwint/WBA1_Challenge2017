@@ -57,12 +57,8 @@
         Navigate
     </button> 
 
-    <div>
-        holamundo
-    </div>
-
-    </div>
-    <script>
+</div>
+<script>
     // Note: This example requires that you consent to location sharing when
     // prompted by your browser. If you see the error "The Geolocation service
     // failed.", it means you probably did not give permission for the browser to
@@ -161,9 +157,11 @@
         console.log(results.length);
         for (var i = 0, result; result = results[i]; i++) {
             addMarker(result);
-            addToList(result);
         }
     }
+
+    
+
     function addMarker(place) {
         var marker = new google.maps.Marker({
             map: map,
