@@ -55,7 +55,7 @@
     
     <button onclick="calcRoute()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
         Navigate
-    </button> 
+    </button>  
 
 </div>
 <script>
@@ -69,7 +69,7 @@
     var pos;
     var markers = [];
 	var selectedMarkerPosition;
-
+    var placesType;
     var directionsDisplay;
     var directionsService;
 
@@ -157,11 +157,13 @@
         console.log(results.length);
         for (var i = 0, result; result = results[i]; i++) {
             addMarker(result);
+            placesType[i] = result;
         }
     }
-
-    
-
+    function listPlacesByType(){
+        for (var i = 0; i < placesType.length; i++){     
+        }
+    }
     function addMarker(place) {
         var marker = new google.maps.Marker({
             map: map,
@@ -227,9 +229,7 @@
             markers[i].setMap(map);
         }
     }
-    
-
-
+ 
 </script>
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV92k8Qt0qH1bAQggTSKYy-9l4We2Ckwc&callback=initMap"
         async defer></script>-->
