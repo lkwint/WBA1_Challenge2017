@@ -212,9 +212,6 @@
             icon = '<span class="map-icon map-icon-post-office"></span>';
         }
 
-
-
-
         var marker = new mapIcons.Marker({
             map: map,
             position: place.geometry.location,
@@ -229,7 +226,6 @@
             map_icon_label: icon
 
         });
-
 
         markers.push(marker);
 
@@ -261,6 +257,8 @@
                     case 4:
                         price = "Very Expensive";
                         break;
+                    default: 
+                        price = "";
                 }
                 
                 var marker_selected = result.geometry.location;
