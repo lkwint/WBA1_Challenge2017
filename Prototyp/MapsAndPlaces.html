@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <link rel="stylesheet" href="dist/css/map-icons.css">
-    <link rel="stylesheet" href="MapsandPlaces.css">
 
 
     <style>
@@ -23,18 +22,13 @@
             margin: 0;
             padding: 0;
         }
-        .mybutton{
-
-            background-image:url(/Prototyp/Icons/atm_machine.svg) ;
-        }
     </style>
 </head>
 <body>
 <div id="map"></div>
-
 <div class="buttons">
     <!-- Colored raised button -->
-    <button onclick="clear_and_getPlaces('pharmacy')" class=" mybutton ">
+    <button onclick="clear_and_getPlaces('pharmacy')" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
     Aphotheke
 
 </button>
@@ -58,28 +52,10 @@
     <button onclick="clear_and_getPlaces('atm')" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
         Geldautomat
     </button>
+    
     <button onclick="calcRoute()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
         Navigate
     </button>  
-
-</div>
-<div class="icons">
-    <div class="f_line_icons">
-        <div><img src="Icons/hospital.svg" onclick="clear_and_getPlaces('pharmacy')" width="100px" height="100px"></div>
-        <div class="icons_rechts">    <img src="Icons/atm.gif" onclick="clear_and_getPlaces('atm')" width="125px" height="105px"></div></div>
-    <div class="s_line_icons">
-
-        <div><img src="Icons/fuel-station-pump.gif" onclick="clear_and_getPlaces('gas_station')" height="100px" width="110px"></div>
-
-        <div class="icons_rechts"><img src="Icons/mall.gif" onclick="clear_and_getPlaces('shopping_mall')" width="px" height="100px"></div></div>
-    <div class="t_line_icons">
-
-        <div><img src="Icons/post-office.gif" onclick="clear_and_getPlaces('post_office')" width="110px" height="100px"></div>
-        <div class="icons_rechts"><img src="Icons/restaraunt.gif" onclick="clear_and_getPlaces('restaurant')" width="110px" height="105px"></div>
-    </div>
-</div>
-
-    
 
 </div>
 <script>
@@ -124,10 +100,7 @@
                     lng: position.coords.longitude
                 };
                 marker.setPosition(pos);
-                //marker.setPosition(pos);
                 map.setCenter(pos);
-
-//                getPlaces('gas_station');
 
             }, function() {
                 handleLocationError(true, infoWindow, map.getCenter());
@@ -163,9 +136,7 @@
     }
 //radius als parameter übergeben
     function getPlaces(type) {
-
         var pyrmont = new google.maps.LatLng(pos.lat,pos.lng);
-
         var request = {
             location: pyrmont,
             radius: 2000,
@@ -186,49 +157,20 @@
         console.log(results.length);
         for (var i = 0, result; result = results[i]; i++) {
             addMarker(result);
+            placesType[i] = result;
         }
     }
-
     function addMarker(place) {
-
-        var icon = null;
-        // types array contains restaurant ?
-        if(place.types.indexOf('restaurant') >= 0){
-            icon = '<span class="map-icon map-icon-restaurant"></span>';
-        }
-        if(place.types.indexOf('pharmacy') >= 0){
-            icon = '<span class="map-icon map-icon-health"></span>';
-        }
-        if(place.types.indexOf('gas_station') >= 0){
-            icon = '<span class="map-icon map-icon-gas-station"></span>';
-        }
-        if(place.types.indexOf('atm') >= 0){
-            icon = '<span class="map-icon map-icon-atm"></span>';
-        }
-        if(place.types.indexOf('shopping_mall') >= 0){
-            icon = '<span class="map-icon map-icon-shopping-mall"></span>';
-        }
-        if(place.types.indexOf('post_office') >= 0){
-            icon = '<span class="map-icon map-icon-post-office"></span>';
-        }
-
-        var marker = new mapIcons.Marker({
+        var marker = new google.maps.Marker({
             map: map,
             position: place.geometry.location,
             icon: {
-                //url: 'https://developers.google.com/maps/documentation/javascript/images/circle.png',
-                path: mapIcons.shapes.ROUTE,
-                fillColor: '#ff5757',
-                fillOpacity: 1,
-                strokeColor: '',
-                strokeWeight: 0
-            },
-            map_icon_label: icon
-
+                url: 'https://developers.google.com/maps/documentation/javascript/images/circle.png',
+                anchor: new google.maps.Point(10, 10),
+                scaledSize: new google.maps.Size(10, 17)
+            }
         });
-
         markers.push(marker);
-
         google.maps.event.addListener(marker, 'click', function() {
             service.getDetails(place, function(result, status) {
                 if (status !== google.maps.places.PlacesServiceStatus.OK) {
@@ -257,8 +199,6 @@
                     case 4:
                         price = "Very Expensive";
                         break;
-                    default: 
-                        price = "";
                 }
                 
                 var marker_selected = result.geometry.location;
@@ -285,19 +225,18 @@
             markers[i].setMap(map);
         }
     }
-
-
-
-
+    function listPlacesByType(){
+        for (var i = 0; i < placesType.length; i++){
+            
+        }
+    }
+ 
 </script>
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV92k8Qt0qH1bAQggTSKYy-9l4We2Ckwc&callback=initMap"
-        async defer></script>-->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV92k8Qt0qH1bAQggTSKYy-9l4We2Ckwc&libraries=places&callback=initMap"
-        async defer></script>
+    async defer></script>-->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV92k8Qt0qH1bAQggTSKYy-9l4We2Ckwc&libraries=places&callback=initMap"
+    async defer></script>
 <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-
-<script src="dist/js/map-icons.js"></script>
-
 
 </body>
 </html>
