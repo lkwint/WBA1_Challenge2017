@@ -182,7 +182,8 @@ function addMarker(place) {
 
             var datails = 'Name: ' + result.name + '</br>' +
                 'Address: ' + result.formatted_address + '</br>' +
-                'Phone Number: ' + result.formatted_phone_number + '</br>' + open + '</br>' + price;
+                'Phone Number: ' + result.formatted_phone_number + '</br>' + open + '</br>' + price + '</br>' + 
+                '<button onclick="calcRoute()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"> Weg zeigen </button>';
 
             infoWindow.setContent(datails);
             infoWindow.open(map, marker);
