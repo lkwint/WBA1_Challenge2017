@@ -92,6 +92,10 @@ function getPlaces(type) {
 function clear_and_getPlaces(type) {
     deleteMarkers();
     getPlaces(type);
+    clearDirections();
+}
+function clearDirections(){
+    directionsDisplay.set('directions', null);
 }
 function callback(results, status) {
     if (status !== google.maps.places.PlacesServiceStatus.OK) {
@@ -126,9 +130,6 @@ function addMarker(place) {
     if(place.types.indexOf('post_office') >= 0){
         icon = '<span class="map-icon map-icon-post-office"></span>';
     }
-
-
-
 
     var marker = new mapIcons.Marker({
         map: map,
@@ -176,14 +177,16 @@ function addMarker(place) {
                 case 4:
                     price = "Very Expensive";
                     break;
+                default:
+                    price = "  "; 
             }
 
             var marker_selected = result.geometry.location;
 
-            var datails = 'Name: ' + result.name + '</br>' +
-                'Address: ' + result.formatted_address + '</br>' +
-                'Phone Number: ' + result.formatted_phone_number + '</br>' + open + '</br>' + price + '</br>' + 
-                '<button onclick="calcRoute()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"> Weg zeigen </button>';
+            var datails = '<div class="info_container"> <b>' + result.name + '</b></br>' +
+                result.formatted_address + '</br>' +
+                result.formatted_phone_number + '</br>' + open + '</br>' + price + '</br>' + 
+                '<button onclick="calcRoute()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"> Weg zeigen </button></div>';
 
             infoWindow.setContent(datails);
             infoWindow.open(map, marker);
