@@ -89,14 +89,18 @@ function getPlaces(type) {
     service = new google.maps.places.PlacesService(map);
     service.nearbySearch(request, callback);
 }
+
 function clear_and_getPlaces(type) {
     deleteMarkers();
+    placesType = [];
     getPlaces(type);
     clearDirections();
 }
+
 function clearDirections(){
     directionsDisplay.set('directions', null);
 }
+
 function callback(results, status) {
     if (status !== google.maps.places.PlacesServiceStatus.OK) {
         console.error(status);
@@ -108,8 +112,24 @@ function callback(results, status) {
     }
 }
 
+function updateMarkerInformation(marker, place) {
+    service.getDetails(place, function(result, status) {
+        if (status !== google.maps.places.PlacesServiceStatus.OK) {
+            console.error(status);
+            return;
+        }
+
+        placesType.push({
+            marker:marker,
+            markerInfo: result
+        });
+
+        // update each time the marker array was modified
+        fillContainer('list_container');
+    });
+}
+
 function addMarker(place) {
-    var marker = new google.maps.Marker({
 
     var icon = null;
     // types array contains restaurant ?
@@ -132,7 +152,20 @@ function addMarker(place) {
         icon = '<span class="map-icon map-icon-post-office"></span>';
     }
 
+    var marker = new mapIcons.Marker({
+        map: map,
+        position: place.geometry.location,
+        icon: {
+            //url: 'https://developers.google.com/maps/documentation/javascript/images/circle.png',
+            path: mapIcons.shapes.ROUTE,
+            fillColor: '#ff5757',
+            fillOpacity: 1,
+            strokeColor: '',
+            strokeWeight: 0
+        },
+        map_icon_label: icon
 
+    });
     markers.push(marker);
 
     // TODO update marker information
@@ -144,12 +177,8 @@ function addMarker(place) {
             return value.marker === marker;
         });
 
-    google.maps.event.addListener(marker, 'click', function() {
-        service.getDetails(place, function(result, status) {
-            if (status !== google.maps.places.PlacesServiceStatus.OK) {
-                console.error(status);
-                return;
-            }
+        var result = markerInfo.markerInfo;
+
 
             var open = "Closed";
             if (result.opening_hours.open_now)
@@ -188,16 +217,18 @@ function addMarker(place) {
             selectedMarkerPosition = result.geometry.location;
 
     });
-    });
 
+}
 
 function clearMarkers() {
     setMapOnAll(null);
 }
+
 function deleteMarkers() {
     clearMarkers();
     markers = [];
 }
+
 function setMapOnAll(map) {
     for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(map);
@@ -216,8 +247,7 @@ function setMapOnAll(map) {
     }
 }
 
-function fillContainer(id)
-{
+function fillContainer(id) {
     var container = document.getElementById(id);
     if(container === undefined)
         return;
@@ -252,6 +282,7 @@ function fillContainer(id)
     container.innerHTML = innerHTML;
 
 }
+
 function addBorder(iconId) {
 
     document.getElementById(iconId).classList.toggle("border_active");
