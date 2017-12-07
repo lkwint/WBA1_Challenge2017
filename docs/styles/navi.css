@@ -83,8 +83,6 @@ body {font-family: 'Roboto', sans-serif;}
 
 .up_container{
     background-color: #f3f3f3;
-    padding: 50px 0;
-
 }
 
 .wrapper{
@@ -121,6 +119,7 @@ body {font-family: 'Roboto', sans-serif;}
 /* UP RIGHT */
 
 .up_right{
+    padding-top: 30px;
     text-align: center;
     right: 53%;
     width: 49%;
@@ -133,6 +132,24 @@ body {font-family: 'Roboto', sans-serif;}
 .up_right img {
     border-radius: 3%;
     width: 115%;
+}
+
+.up_right_th{
+    padding-top: 30px;
+    text-align: center;
+    right: 53%;
+    width: 49%;
+    display: inline-block;
+    font-size: 16px;
+    position: relative;
+    vertical-align: middle;
+}
+
+.up_right_th img {
+
+    border-radius: 3%;
+    width: 90%;
+}
 }
 
 /* DOWN LEFT */
