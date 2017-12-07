@@ -264,24 +264,27 @@ function fillContainer(id) {
         console.log(item);
         //dynamically create a new row
         innerHTML += '<div class="mdl-grid">\n' +
-            '        <div class="mdl-cell mdl-cell--8-col">\n' +
-            '            <div id="datalist_left">\n' +
-            '                <h6>'+ item.name +'</h6>\n' +
-            '                <p>' + item.formatted_phone_number+ '</p>\n' +
-            '                <p>' + item.formatted_address + '</p>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '        <div class="mdl-cell mdl-cell--4-col">\n' +
-            '            <div id="datalist_right">\n' +
-            '                <img src="" alt="NoImage"></div>\n' +
-            '            <div class="datalist"></div>\n' +
-            '        </div>\n' +
-            '    </div>';
+        '        <div class="mdl-cell mdl-cell--8-col">\n' +
+        '            <div id="datalist_left">\n' +
+        '                <h6><b>'+ item.name +'</b></h6>\n' +
+        '                <p>' + item.formatted_phone_number+ '</p>\n' +
+        '                <p>' + item.formatted_address + '</p>\n' +
+        '            </div>\n' +
+        '        </div>\n' +
+        '        <div class="mdl-cell mdl-cell--4-col">\n' +
+        '            <div id="datalist_right">\n' +
+        '                <img src="" alt="NoImage"></div>\n' +
+        '            <div class="datalist"></div>\n' +
+        '        </div>\n' +
+        '    </div> <hr>';
+
     }
+
 
     container.innerHTML = innerHTML;
 
 }
+// ' + item.photos[1].photo_reference + '
 
 function addBorder(iconId) {
 
