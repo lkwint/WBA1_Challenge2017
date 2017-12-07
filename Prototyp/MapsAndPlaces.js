@@ -180,9 +180,9 @@ function addMarker(place) {
         var result = markerInfo.markerInfo;
 
 
-            var open = "Closed";
+            var open = "Geschlossen";
             if (result.opening_hours !== undefined && result.opening_hours.open_now)
-                open = "Open";
+                open = "Geoeffnet";
 
             var price;
             switch(result.price_level) {
@@ -261,9 +261,10 @@ function fillContainer(id) {
     {
         var item = placesType[i].markerInfo;
 
-        console.log(item);
+        console.log(item.photos);
         //dynamically create a new row
         innerHTML += '<div class="mdl-grid">\n' +
+<<<<<<< HEAD
             '        <div class="mdl-cell mdl-cell--8-col">\n' +
             '            <div id="datalist_left">\n' +
             '                <h6>'+ item.name +'</h6>\n' +
@@ -276,12 +277,30 @@ function fillContainer(id) {
             '                <img src="" alt="NoImage"></div>\n' +
             '            <div class="datalist"></div>\n' +
             '        </div>\n' +
-            '    </div>';
+            '    </div> <hr>';
+=======
+        '        <div class="mdl-cell mdl-cell--8-col">\n' +
+        '            <div id="datalist_left">\n' +
+        '                <h6><b>'+ item.name +'</b></h6>\n' +
+        '                <p>' + item.formatted_phone_number+ '</p>\n' +
+        '                <p>' + item.formatted_address + '</p>\n' +
+        '            </div>\n' +
+        '        </div>\n' +
+        '        <div class="mdl-cell mdl-cell--4-col">\n' +
+        '            <div id="datalist_right">\n' +
+        '                <img src="" alt="NoImage"></div>\n' +
+        '            <div class="datalist"></div>\n' +
+        '        </div>\n' +
+        '    </div> <hr>';
+
+>>>>>>> 4933c22fea1870801081cd2032d621ea33efd45d
     }
 
-    container.innerHTML = innerHTML;
 
+    container.innerHTML = innerHTML;
+ //   ' + item.photos[0].photos.getUrl() + '
 }
+// ' + item.photos[1].photo_reference + '
 
 function addBorder(iconId) {
 
