@@ -62,6 +62,8 @@ html, body {
 }
 
 .info_container {
+    text-align: center;
+    font-size: 15px;
     justify-content: center;
     text-align: center;
     font-size: 15px;
