@@ -44,3 +44,15 @@ html, body {
 .spalte{
     margin-left: 20%;
 }
+#datalist_left {
+    width: 80%;
+}
+
+#datalist_right {
+    width: 20%;
+
+}
+
+.datalist {
+    width: 50%;
+}

@@ -201,4 +201,53 @@ function setMapOnAll(map) {
     for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(map);
     }
+
+    function listPlacesByType() {
+        var total = "<ul>";
+        for (var i = 0; i < placesType.length; i++) {
+            total +=
+                "<li>" + placesType[i].markerInfo.name + " " + placesType[i].markerInfo.formatted_phone_number + "</li>"
+        }
+        total += "</ul>";
+        document.getElementById("list").innerHTML = total;
+
+        fillContainer('list_container');
+    }
+}
+
+function fillContainer(id)
+{
+    var container = document.getElementById(id);
+    if(container === undefined)
+        return;
+
+    // clear before fill
+    container.innerHTML = "";
+
+    var innerHTML = "";
+
+    for(var i = 0; i < placesType.length; i++)
+    {
+        var item = placesType[i].markerInfo;
+
+        console.log(item);
+        //dynamically create a new row
+        innerHTML += '<div class="mdl-grid">\n' +
+            '        <div class="mdl-cell mdl-cell--8-col">\n' +
+            '            <div id="datalist_left">\n' +
+            '                <h6>'+ item.name +'</h6>\n' +
+            '                <p>' + item.formatted_phone_number+ '</p>\n' +
+            '                <p>' + item.formatted_address + '</p>\n' +
+            '            </div>\n' +
+            '        </div>\n' +
+            '        <div class="mdl-cell mdl-cell--4-col">\n' +
+            '            <div id="datalist_right">\n' +
+            '                <img src="" alt="NoImage"></div>\n' +
+            '            <div class="datalist"></div>\n' +
+            '        </div>\n' +
+            '    </div>';
+    }
+
+    container.innerHTML = innerHTML;
+
 }
