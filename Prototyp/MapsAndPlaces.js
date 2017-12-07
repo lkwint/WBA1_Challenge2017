@@ -180,9 +180,9 @@ function addMarker(place) {
         var result = markerInfo.markerInfo;
 
 
-            var open = "Closed";
+            var open = "Geschlossen";
             if (result.opening_hours !== undefined && result.opening_hours.open_now)
-                open = "Open";
+                open = "Geoeffnet";
 
             var price;
             switch(result.price_level) {
@@ -261,7 +261,7 @@ function fillContainer(id) {
     {
         var item = placesType[i].markerInfo;
 
-        console.log(item);
+        console.log(item.photos);
         //dynamically create a new row
         innerHTML += '<div class="mdl-grid">\n' +
             '        <div class="mdl-cell mdl-cell--8-col">\n' +
@@ -276,11 +276,11 @@ function fillContainer(id) {
             '                <img src="" alt="NoImage"></div>\n' +
             '            <div class="datalist"></div>\n' +
             '        </div>\n' +
-            '    </div>';
+            '    </div> <hr>';
     }
 
     container.innerHTML = innerHTML;
-
+ //   ' + item.photos[0].photos.getUrl() + '
 }
 
 function addBorder(iconId) {
