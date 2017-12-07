@@ -6824,7 +6824,7 @@ h2 {
   grid-template-columns: 1fr 1fr; }
 
 .bottom-area__item {
-  border: solid 1px #222;
+  border: solid 1px #aba9a9;
   overflow: hidden;
   position: relative; }
 
