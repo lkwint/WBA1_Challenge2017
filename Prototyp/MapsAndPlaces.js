@@ -263,7 +263,7 @@ function fillContainer(id) {
 
         console.log(item);
         //dynamically create a new row
-        innerHTML += '<div class="mdl-grid">\n' +
+        innerHTML += '<div class="list_of_data mdl-grid">\n' +
         '        <div class="mdl-cell mdl-cell--8-col">\n' +
         '            <div id="datalist_left">\n' +
         '                <h6><b>'+ item.name +'</b></h6>\n' +
