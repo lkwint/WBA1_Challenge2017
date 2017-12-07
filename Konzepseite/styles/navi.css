@@ -113,7 +113,7 @@ body {font-family: 'Roboto', sans-serif;}
     color: #808080;
 }
 
-.up_left h2 {
+.up_left h3 {
     font-family: 'Roboto', sans-serif;
     margin-bottom: 5px;
 }
@@ -168,7 +168,7 @@ body {font-family: 'Roboto', sans-serif;}
     vertical-align: middle;
 }
 
-.down_right h2{
+.down_right h3{
     font-family: 'Roboto', sans-serif;
     margin-bottom: 5px;
 }
