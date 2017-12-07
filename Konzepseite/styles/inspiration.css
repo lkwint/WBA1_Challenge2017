@@ -25,7 +25,7 @@ img {
 a {
     padding: 0.1em;
 }
-/* Large screens */
+ Large screens
 
 @media all and (min-width: 35em) {
     li {
