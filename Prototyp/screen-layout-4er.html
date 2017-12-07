@@ -13,6 +13,13 @@
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700" rel="stylesheet">
     <!-- Google API map -->
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="dist/css/map-icons.css">
+    <link rel="stylesheet" href="MapsandPlaces.css">
+    <script src="MapsAndPlaces.js"></script>
+
 
 
 </head>
@@ -22,12 +29,47 @@
 
         <section class="screen__top-area">
             <div class="top-area__upper-content">
-                <div id="sidebar" class="upper-content__left" data-trigger="fullscreenTarget">
-                    <img src="images/tsl/tsl-sidebar-tr.svg" alt="sidebar" id="tsl-sidebar">
+                <div id="sidebar" class="upper-content__left" data-trigger="fullscreenTarget"
+                     style="background: white;"
+                >
+                    <div class="f_line_icons">
+
+                    <img class="icons " src="Icons/hospital.gif" onclick="clear_and_getPlaces('pharmacy')" width="100px" height="100px">
+                    <img class="icons spalte" src="Icons/atm.gif" onclick="clear_and_getPlaces('atm')" width="125px" height="105px">
+                    </div>
+                    <div class="s_line_icons">
+
+                    <img class="icons " src="Icons/fuel-station-pump.gif" onclick="clear_and_getPlaces('atm')" width="125px" height="105px">
+                    <img class="icons spalte" src="Icons/mall.gif" onclick="clear_and_getPlaces('atm')" width="125px" height="105px">                    </div>
+                    <div class="t_line_icons">
+
+                    <img class="icons " src="Icons/post-office.gif" onclick="clear_and_getPlaces('atm')" width="125px" height="105px">
+                    <img class="icons spalte" src="Icons/restaraunt.gif" onclick="clear_and_getPlaces('atm')" width="125px" height="105px">
+                    </div>
+                        <!--<div class="f_line_icons">-->
+                            <!--<div><img src="Icons/hospital.svg" onclick="clear_and_getPlaces('pharmacy')" width="100px" height="100px"></div>-->
+                            <!--<div class="icons_rechts">    <img src="Icons/atm.gif" onclick="clear_and_getPlaces('atm')" width="125px" height="105px"></div></div>-->
+                        <!--<div class="s_line_icons">-->
+
+                            <!--<div><img src="Icons/fuel-station-pump.gif" onclick="clear_and_getPlaces('gas_station')" height="100px" width="110px"></div>-->
+
+                            <!--<div class="icons_rechts"><img src="Icons/mall.gif" onclick="clear_and_getPlaces('shopping_mall')" width="px" height="100px"></div></div>-->
+                        <!--<div class="t_line_icons">-->
+
+                            <!--<div><img src="Icons/post-office.gif" onclick="clear_and_getPlaces('post_office')" width="110px" height="100px"></div>-->
+                            <!--<div class="icons_rechts"><img src="Icons/restaraunt.gif" onclick="clear_and_getPlaces('restaurant')" width="110px" height="105px"></div>-->
+                        <!--</div>-->
+
                 </div>
                 <div class="upper-content__right" data-trigger="fullscreen" data-content-upper>
-                    <div class="screen__content tsl-fixed" draggable="true" data-trigger="fullscreenChild" data-screen-content>
+                    <div class="screen__content tsl-fixed" draggable="true" style="background: white;" data-trigger="fullscreenChild" data-screen-content>
                         <div id="map"></div>
+
+
+                    </div>
+
+                    </div>
+
                     </div>
                 </div>
             </div>
@@ -50,7 +92,7 @@
 
             <!-- Section 1: oben links
 				##########################################################################-->
-            <section id="section1" class="bottom-area__item">
+            <section id="section1" class="bottom-area__item" style="background: white;">
                 <div class="screen__content" draggable="true"  data-screen-content>
                     <!-- Put your Content here ###########################################-->
 
@@ -64,7 +106,7 @@
 
             <!-- Section 2: oben rechts
 				##########################################################################-->
-            <section id="section2" class="bottom-area__item">
+            <section id="section2" class="bottom-area__item" style="background: white;">
                 <div class="screen__content is-scrollable" draggable="true"  data-screen-content>
                     <!-- Put your Content here ###########################################-->
 
@@ -83,7 +125,7 @@
 
             <!-- Section 3: unten links
 				##########################################################################-->
-            <section id="section3" class="bottom-area__item">
+            <section id="section3" class="bottom-area__item" style="background: white;">
                 <div class="screen__content" draggable="true" data-screen-content>
                     <!-- Put your Content here ###########################################-->
 
@@ -95,7 +137,7 @@
 
             <!-- Section 4: unten rechts
 				##########################################################################-->
-            <section id="section4" class="bottom-area__item">
+            <section id="section4" class="bottom-area__item" style="background: white;">
                 <div class="screen__content is-scrollable" draggable="true" data-screen-content>
                     <!-- Put your Content here ###########################################-->
 
@@ -134,23 +176,14 @@
     <!-- Google API map -->
 
     <!-- Init places API https://developers.google.com/maps/documentation/javascript/places?hl=de&authuser=1 -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV92k8Qt0qH1bAQggTSKYy-9l4We2Ckwc&libraries=places"></script>
 
-    <script>
-        var map;
-        function initMap() {
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: -34.397, lng: 150.644},
-                zoom: 8
-            });
-        }
-    </script>
-<<<<<<< HEAD
-=======
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV92k8Qt0qH1bAQggTSKYy-9l4We2Ckwc&callback=initMap"
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV92k8Qt0qH1bAQggTSKYy-9l4We2Ckwc&libraries=places&callback=initMap"
             async defer></script>
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
+    <script src="dist/js/map-icons.js"></script>
 
 
 

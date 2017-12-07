@@ -1,8 +1,7 @@
 .icons{
-    position: absolute;
-    width: 400px;
-    height: 800px;
-    margin-left: 30px;
+    position: relative;
+    width:30% !important;
+    margin-left: 4%;
 
 }
 .icons_rechts{
@@ -12,8 +11,36 @@
 }
 
 .s_line_icons{
-    margin-bottom: -50px;
-}
+    margin-top: 20%;
+    margin-left: 10%;}
 .f_line_icons{
-    margin-bottom: -50px;
+    margin-top: 5%;
+    margin-left: 10%;}
+.t_line_icons{
+    margin-top: 20%;
+    margin-left: 10%;
+    margin-bottom: 5%;
+}
+/* Always set the map height explicitly to define the size of the div
+        * element that contains the map. */
+#map {
+    height: 100%;
+    width:100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.mybutton {
+
+    background-image: url(/Prototyp/Icons/atm_machine.svg);
+}
+.icons_links{
+    position: relative;
+    left: -80px;
+}
+.spalte{
+    margin-left: 20%;
 }
