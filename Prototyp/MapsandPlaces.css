@@ -64,3 +64,8 @@ html, body {
 .info_container {
     justify-content: center;
 }
+
+.border_active{
+    border: 1px #000000;
+    background-color: white;
+}
