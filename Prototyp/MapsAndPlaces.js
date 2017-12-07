@@ -8,7 +8,7 @@ var infoWindow;
 var pos;
 var markers = [];
 var selectedMarkerPosition;
-var placesType;
+var placesType = [];
 var directionsDisplay;
 var directionsService;
 
@@ -33,18 +33,15 @@ function initMap() {
 
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
+        navigator.geolocation.getCurrentPosition(function (position) {
             pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
             marker.setPosition(pos);
-            //marker.setPosition(pos);
             map.setCenter(pos);
 
-//                getPlaces('gas_station');
-
-        }, function() {
+        }, function () {
             handleLocationError(true, infoWindow, map.getCenter());
         });
     } else {
@@ -109,6 +106,7 @@ function callback(results, status) {
 }
 
 function addMarker(place) {
+    var marker = new google.maps.Marker({
 
     var icon = null;
     // types array contains restaurant ?
@@ -131,23 +129,17 @@ function addMarker(place) {
         icon = '<span class="map-icon map-icon-post-office"></span>';
     }
 
-    var marker = new mapIcons.Marker({
-        map: map,
-        position: place.geometry.location,
-        icon: {
-            //url: 'https://developers.google.com/maps/documentation/javascript/images/circle.png',
-            path: mapIcons.shapes.ROUTE,
-            fillColor: '#ff5757',
-            fillOpacity: 1,
-            strokeColor: '',
-            strokeWeight: 0
-        },
-        map_icon_label: icon
-
-    });
-
 
     markers.push(marker);
+
+    // TODO update marker information
+    updateMarkerInformation(marker, place);
+
+    google.maps.event.addListener(marker, 'click', function () {
+
+        var markerInfo = placesType.find(function (value) {
+            return value.marker === marker;
+        });
 
     google.maps.event.addListener(marker, 'click', function() {
         service.getDetails(place, function(result, status) {
@@ -191,8 +183,10 @@ function addMarker(place) {
             infoWindow.setContent(datails);
             infoWindow.open(map, marker);
             selectedMarkerPosition = result.geometry.location;
-        });
+
     });
+    });
+
 }
 function clearMarkers() {
     setMapOnAll(null);
@@ -253,5 +247,13 @@ function fillContainer(id)
     }
 
     container.innerHTML = innerHTML;
+
+}
+function addBorder(iconId) {
+    document.getElementById(iconId).classList.add("border_active");
+    console.log(iconId);
+    document.getElementById("myDropdown").classList.toggle("show");
+
+
 
 }

@@ -19,6 +19,15 @@ body {font-family: "Lato","Helvetica Neue","Helvetica",sans-serif;}
 }
 
 /* Navigator */
+.headerbild {
+  background: url(../img/IMG_20171207_100344.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 700px;
+  height: 600px;
+}
 
 .nav h2{
     font-family: "Lato","Helvetica Neue","Helvetica",sans-serif;
@@ -330,5 +339,3 @@ h5{
     text-align: left;
     padding-left: 40px;
 }
-
-
