@@ -2,8 +2,12 @@
     position: relative;
     width:30% !important;
     margin-left: 4%;
-
 }
+.icons:active{
+    width: 50%;
+    height: 50%;
+}
+
 .icons_rechts{
     position: relative;
     left: 200px;
