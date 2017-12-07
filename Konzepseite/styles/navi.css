@@ -7,7 +7,7 @@
      padding-right: 0;
  }
 * {box-sizing:border-box}
-body {font-family: Verdana,sans-serif;}
+body {font-family: "Lato","Helvetica Neue","Helvetica",sans-serif;}
 .mySlides {display:none}
 
 /* Slideshow container */
@@ -16,6 +16,119 @@ body {font-family: Verdana,sans-serif;}
     margin: auto;
     width:100vw;
     max-height: 100vw;
+}
+
+/* Navigator */
+
+.nav h2{
+    font-family: "Lato","Helvetica Neue","Helvetica",sans-serif;
+    font-size: 36px;
+    line-height: 44px;
+    font-weight: 200;
+    margin-top: 30px;
+    margin-bottom: 5px;
+}
+
+/* First element */
+
+.first_big{
+    max-width: 100%;
+
+}
+
+.first{
+    text-align: center;
+    font-size: 36px;
+    line-height: 44px;
+    font-weight: 200;
+}
+
+.first_2{
+    color: #808080;
+    text-align: center;
+    font-size: 16px
+}
+
+.first h2{
+    font-family: "Lato","Helvetica Neue","Helvetica",sans-serif;
+    margin-bottom: 24px;
+    font-size: 36px;
+    line-height: 44px;
+    font-weight: 200;
+}
+
+.first_img{
+    width: 100%;
+}
+
+.first_img img {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+
+/* UP CONTAINER */
+
+.up_container{
+    background-color: #f3f3f3;
+    padding: 50px 0;
+
+}
+
+.wrapper{
+    position: relative;
+    width: 920px;
+    margin: 0 auto;
+    min-height: 100%;
+}
+
+/* UP LEFT */
+
+.up_left{
+    text-align: center;
+    left: 50%;
+    width: 50%;
+    display: inline-block;
+    font-size: 16px;
+    position: relative;
+    vertical-align: middle;
+}
+
+/* UP RIGHT */
+
+.up_right{
+    text-align: center;
+    right: 50%;
+    width: 49%;
+    display: inline-block;
+    font-size: 16px;
+    position: relative;
+    vertical-align: middle;
+}
+
+/* DOWN LEFT */
+
+.down_left{
+    text-align: center;
+    left: 50%;
+    width: 50%;
+    display: inline-block;
+    font-size: 16px;
+    position: relative;
+    vertical-align: middle;
+}
+
+/* DOWN RIGHT */
+
+.down_right{
+    text-align: center;
+    right: 50%;
+    width: 49%;
+    display: inline-block;
+    font-size: 16px;
+    position: relative;
+    vertical-align: middle;
 }
 
 /* Caption text */
@@ -208,3 +321,5 @@ h5{
     text-align: left;
     padding-left: 40px;
 }
+
+
