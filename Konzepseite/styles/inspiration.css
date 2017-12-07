@@ -39,7 +39,7 @@ a {
     }
     a img {
         border: 0;
-        position: absolute;
+        /*position: absolute;*/
         left: 0%;
         top: 0%;
         z-index: 1;
@@ -51,7 +51,7 @@ a {
     a:hover img {
         border: 2em solid #eee;
         border-radius: 1em;
-        position: absolute;
+        /*position: absolute;*/
         left: -4%;
         top: -4%;
         width: 650%;
