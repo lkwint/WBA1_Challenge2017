@@ -45,7 +45,7 @@ a {
         top: 0%;
         z-index: 1;
         box-shadow: 0;
-        width: 10em;
+         width: 10em;
         transition: all 1s;
     }
     a:focus img,
