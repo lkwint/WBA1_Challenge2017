@@ -7,7 +7,7 @@
      padding-right: 0;
  }
 * {box-sizing:border-box}
-body {font-family: "Lato","Helvetica Neue","Helvetica",sans-serif;}
+body {font-family: 'Roboto', sans-serif;}
 .mySlides {display:none}
 
 /* Slideshow container */
@@ -88,7 +88,7 @@ body {font-family: "Lato","Helvetica Neue","Helvetica",sans-serif;}
 }
 
 .wrapper{
-    padding-bottom: 50px;
+    padding-bottom: 30px;
     position: relative;
     width: 920px;
     margin: 0 auto;
@@ -99,7 +99,7 @@ body {font-family: "Lato","Helvetica Neue","Helvetica",sans-serif;}
 
 .up_left{
     text-align: center;
-    left: 50%;
+    left: 53%;
     width: 50%;
     display: inline-block;
     font-size: 16px;
@@ -107,16 +107,32 @@ body {font-family: "Lato","Helvetica Neue","Helvetica",sans-serif;}
     vertical-align: middle;
 }
 
+.up_left p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #808080;
+}
+
+.up_left h2 {
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 5px;
+}
+
 /* UP RIGHT */
 
 .up_right{
     text-align: center;
-    right: 50%;
+    right: 53%;
     width: 49%;
     display: inline-block;
     font-size: 16px;
     position: relative;
     vertical-align: middle;
+}
+
+.up_right img {
+    border-radius: 3%;
+    width: 115%;
 }
 
 /* DOWN LEFT */
@@ -127,7 +143,7 @@ body {font-family: "Lato","Helvetica Neue","Helvetica",sans-serif;}
 
 .down_left{
     text-align: center;
-    left: 50%;
+    left: 53%;
     width: 50%;
     display: inline-block;
     font-size: 16px;
@@ -139,11 +155,12 @@ body {font-family: "Lato","Helvetica Neue","Helvetica",sans-serif;}
     width: 500px;
 }
 
+
 /* DOWN RIGHT */
 
 .down_right{
     text-align: center;
-    right: 50%;
+    right: 53%;
     width: 49%;
     display: inline-block;
     font-size: 16px;
@@ -151,6 +168,21 @@ body {font-family: "Lato","Helvetica Neue","Helvetica",sans-serif;}
     vertical-align: middle;
 }
 
+.down_right h2{
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 5px;
+}
+
+.down_right p{
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #808080;
+}
+
+.down_right a{
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+}
 
 /* Caption text */
 .text {

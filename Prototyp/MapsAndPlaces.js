@@ -264,7 +264,10 @@ function fillContainer(id) {
         console.log(item.photos);
         //dynamically create a new row
         innerHTML += '<div class="mdl-grid">\n' +
+<<<<<<< HEAD
+=======
 
+>>>>>>> 58d42e2bf381f8f683ee780a3b02ba9c47eb0d4d
             '        <div class="mdl-cell mdl-cell--8-col">\n' +
             '            <div id="datalist_left">\n' +
             '                <h6>'+ item.name +'</h6>\n' +
@@ -278,15 +281,16 @@ function fillContainer(id) {
             '            <div class="datalist"></div>\n' +
             '        </div>\n' +
             '    </div> <hr>';
+<<<<<<< HEAD
+=======
 
+>>>>>>> 58d42e2bf381f8f683ee780a3b02ba9c47eb0d4d
     }
 
 
     container.innerHTML = innerHTML;
- //   ' + item.photos[0].photos.getUrl() + '
+ //   ' + item.photos[0].getUrl() + '
 }
-// ' + item.photos[1].photo_reference + '
-
 function addBorder(iconId) {
 
     document.getElementById(iconId).classList.toggle("border_active");
