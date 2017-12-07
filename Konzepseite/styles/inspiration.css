@@ -22,7 +22,7 @@ img {
 /* Bild passt sich an verfügbaren Raum im li ann */
 }
 
-button {
+a {
     padding: 0.1em;
 }
 /* Large screens */
@@ -31,13 +31,13 @@ button {
     li {
         width: 10em;
     }
-    button {
+    a {
         padding: 0.1em;
         width: 10em;
         height: 7.5em;
         position: relative;
     }
-    button img {
+    a img {
         border: 0;
         position: absolute;
         left: 0%;
@@ -47,8 +47,8 @@ button {
         width: 10em;
         transition: all 1s;
     }
-    button:focus img,
-    button:hover img {
+    a:focus img,
+    a:hover img {
         border: 2em solid #eee;
         border-radius: 1em;
         position: absolute;
