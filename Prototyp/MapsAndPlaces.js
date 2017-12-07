@@ -264,10 +264,6 @@ function fillContainer(id) {
         console.log(item.photos);
         //dynamically create a new row
         innerHTML += '<div class="mdl-grid">\n' +
-<<<<<<< HEAD
-=======
-
->>>>>>> 58d42e2bf381f8f683ee780a3b02ba9c47eb0d4d
             '        <div class="mdl-cell mdl-cell--8-col">\n' +
             '            <div id="datalist_left">\n' +
             '                <h6>'+ item.name +'</h6>\n' +
@@ -281,10 +277,6 @@ function fillContainer(id) {
             '            <div class="datalist"></div>\n' +
             '        </div>\n' +
             '    </div> <hr>';
-<<<<<<< HEAD
-=======
-
->>>>>>> 58d42e2bf381f8f683ee780a3b02ba9c47eb0d4d
     }
 
 
