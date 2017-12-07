@@ -12,12 +12,14 @@ mainControl.init = function() {
         //Element selektieren
         var element = document.querySelector('[data-content-upper] [data-screen-content]');
         
-        //Element entfernen
-        element.removeChild(element.firstElementChild);
+        //Element entfernen\
+        document.getElementById("map").classList.add("isHidden");
+
+        //element.removeChild(element.firstElementChild);
         
         //Div-Element erzeugen
         var image = document.createElement('div');
-        
+        image.setAttribute("id", "music_player");
         //Attribute hinzufügen
         image.style.backgroundImage = 'url(images/tsl/tsl-music.svg)';
         image.style.backgroundSize = 'cover';
@@ -27,6 +29,12 @@ mainControl.init = function() {
         element.appendChild(image);
     })
 }
+document.getElementById("map_trigger").addEventListener("click", function(){
+    console.log("n");
+    document.getElementById("music_player").classList.add("isHidden");
+    document.getElementById("map").classList.remove("isHidden");
+
+});
 
 // Warten, bis alles geladen ist
 document.addEventListener("DOMContentLoaded", function(event) {
