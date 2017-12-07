@@ -63,9 +63,14 @@ html, body {
 
 .info_container {
     justify-content: center;
+    text-align: center;
+    font-size: 15px;
 }
 
 .border_active{
     border: 1px #000000;
     background-color: white;
+}
+#list_container{
+    background-color: #00AD2F;
 }
