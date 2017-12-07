@@ -181,7 +181,7 @@ function addMarker(place) {
 
 
             var open = "Closed";
-            if (result.opening_hours.open_now)
+            if (result.opening_hours !== undefined && result.opening_hours.open_now)
                 open = "Open";
 
             var price;
