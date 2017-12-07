@@ -66,6 +66,6 @@ html, body {
 }
 
 .border_active{
-    border: solid #000000;
-    background-color: #00AD2F;
+    border: 1px #000000;
+    background-color: white;
 }
