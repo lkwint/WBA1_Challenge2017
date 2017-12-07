@@ -15,19 +15,21 @@ li {
 img {
     padding: 0;
     margin: 0;
-    /*width: 100%;
+    width: 100%;
 
 
-*/
+
 /* Bild passt sich an verfügbaren Raum im li ann */
 }
 
 a {
     padding: 0.1em;
 }
- Large screens
+ /*Large screens*/
 
 @media all and (min-width: 35em) {
+
+    .mdl-cell mdl-cell--8-col
     li {
         width: 10em;
     }
@@ -55,7 +57,7 @@ a {
         /*position: absolute;*/
         left: -4%;
         top: -4%;
-        width: 650%;
+        width: 100%;
         z-index: 5;
         box-shadow: 50px 100px 100px #333;
         transition: all 1s;
