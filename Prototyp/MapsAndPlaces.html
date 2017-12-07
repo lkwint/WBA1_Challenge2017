@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <link rel="stylesheet" href="dist/css/map-icons.css">
 
-
     <style>
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
@@ -22,9 +21,13 @@
             margin: 0;
             padding: 0;
         }
+        .list_menu {
+            list-style: none;
+        }
     </style>
 </head>
 <body>
+<div id="list"></div>
 <div id="map"></div>
 <div class="buttons">
     <!-- Colored raised button -->
@@ -69,7 +72,7 @@
     var pos;
     var markers = [];
 	var selectedMarkerPosition;
-    var placesType;
+    var placesType = [];
     var directionsDisplay;
     var directionsService;
 
@@ -148,6 +151,7 @@
     function clear_and_getPlaces(type) {
         deleteMarkers();
         getPlaces(type);
+        placesType = [];
     }
     function callback(results, status) {
         if (status !== google.maps.places.PlacesServiceStatus.OK) {
@@ -157,13 +161,37 @@
         console.log(results.length);
         for (var i = 0, result; result = results[i]; i++) {
             addMarker(result);
-            placesType[i] = result;
         }
     }
     function listPlacesByType(){
-        for (var i = 0; i < placesType.length; i++){     
+        var total = "<ul>";
+        for (var i = 0; i < placesType.length; i++) {
+            total +=
+                    "<li>" + placesType[i].markerInfo.name + " " + placesType[i].markerInfo.formatted_phone_number + "</li>"
         }
+        total += "</ul>";
+        document.getElementById("list").innerHTML = total;
+        var node = document.getElementsByTagName("li");
+        node.setAttribute("class", "list_menu");
     }
+
+    function updateMarkerInformation(marker, place) {
+        service.getDetails(place, function(result, status) {
+            if (status !== google.maps.places.PlacesServiceStatus.OK) {
+                console.error(status);
+                return;
+            }
+
+            placesType.push({
+                marker:marker,
+                markerInfo: result
+            });
+
+            // update each time the marker array was modified
+            listPlacesByType();
+        });
+    }
+
     function addMarker(place) {
         var marker = new google.maps.Marker({
             map: map,
@@ -175,12 +203,18 @@
             }
         });
         markers.push(marker);
+
+        // TODO update marker information
+        updateMarkerInformation(marker, place);
+
         google.maps.event.addListener(marker, 'click', function() {
-            service.getDetails(place, function(result, status) {
-                if (status !== google.maps.places.PlacesServiceStatus.OK) {
-                    console.error(status);
-                    return;
-                }
+
+            // get markerInfo from array
+            var markerInfo = placesType.find(function (value) {
+                return value.marker === marker;
+            });
+
+            var result = markerInfo.markerInfo;
 
                 var open = "Closed";
                 if (result.opening_hours.open_now)
@@ -204,18 +238,17 @@
                         price = "Very Expensive";
                         break;
                 }
-                
-                var marker_selected = result.geometry.location;
 
-                var datails = 'Name: ' + result.name + '</br>' +
+                var datails = '<b>' + result.name + '</b></br>' +
                               'Address: ' + result.formatted_address + '</br>' +
-                              'Phone Number: ' + result.formatted_phone_number + '</br>' + open + '</br>' + price;
-
+                              'Phone Number: ' + result.formatted_phone_number + '</br>' + open + '</br>' + price + '</br>' +
+                              '<button onclick="calcRoute()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"> Weg anzeigen </button>';
+                
                 infoWindow.setContent(datails);
                 infoWindow.open(map, marker);
 				selectedMarkerPosition = result.geometry.location;
             });
-        });
+
     }
     function clearMarkers() {
         setMapOnAll(null);
