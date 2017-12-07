@@ -240,7 +240,7 @@ body {font-family: "Lato","Helvetica Neue","Helvetica",sans-serif;}
 .demo-card-square > .mdl-card__title {
     color: #fff;
     background:
-            url('../assets/demos/dog.png') bottom right 15% no-repeat rgb(147, 19, 206);
+            url('../assets/demos/dog.png') bottom right 15% no-repeat #ff5757;
 }
 
 .image_card{
@@ -258,8 +258,8 @@ hr {
     margin-top: 0;
     border-bottom: 3px  ;
     margin :30px auto 10px;
-    color: #9313ce;
-    border-top: solid 1px #9313ce;
+    color: #ff5757;
+    border-top: solid 1px #ff5757;
 }
 
 .h6_cards{
@@ -330,8 +330,8 @@ h5{
     margin-top: 0;
     border-bottom: 3px  ;
     margin :30px auto 10px;
-    color: #9313ce;
-    border-top: solid 1px #9313ce;
+    color: #ff5757;
+    border-top: solid 1px #ff5757;
 
 }
 #p_footer{
