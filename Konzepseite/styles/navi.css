@@ -19,6 +19,15 @@ body {font-family: "Lato","Helvetica Neue","Helvetica",sans-serif;}
 }
 
 /* Navigator */
+.headerbild {
+  background: url(../img/IMG_20171207_100344.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 700px;
+  height: 600px;
+}
 
 .nav h2{
     font-family: "Lato","Helvetica Neue","Helvetica",sans-serif;
@@ -58,6 +67,7 @@ body {font-family: "Lato","Helvetica Neue","Helvetica",sans-serif;}
 }
 
 .first_img{
+    margin-top: -24px;
     width: 100%;
 }
 
@@ -66,6 +76,81 @@ body {font-family: "Lato","Helvetica Neue","Helvetica",sans-serif;}
     display: block;
     margin: 0 auto;
 }
+
+
+
+/* UP CONTAINER */
+
+.up_container{
+    background-color: #f3f3f3;
+    padding: 50px 0;
+
+}
+
+.wrapper{
+    padding-bottom: 50px;
+    position: relative;
+    width: 920px;
+    margin: 0 auto;
+    min-height: 100%;
+}
+
+/* UP LEFT */
+
+.up_left{
+    text-align: center;
+    left: 50%;
+    width: 50%;
+    display: inline-block;
+    font-size: 16px;
+    position: relative;
+    vertical-align: middle;
+}
+
+/* UP RIGHT */
+
+.up_right{
+    text-align: center;
+    right: 50%;
+    width: 49%;
+    display: inline-block;
+    font-size: 16px;
+    position: relative;
+    vertical-align: middle;
+}
+
+/* DOWN LEFT */
+
+.down_container{
+    padding-top: 40px;
+}
+
+.down_left{
+    text-align: center;
+    left: 50%;
+    width: 50%;
+    display: inline-block;
+    font-size: 16px;
+    position: relative;
+    vertical-align: middle;
+}
+
+.down_left img{
+    width: 500px;
+}
+
+/* DOWN RIGHT */
+
+.down_right{
+    text-align: center;
+    right: 50%;
+    width: 49%;
+    display: inline-block;
+    font-size: 16px;
+    position: relative;
+    vertical-align: middle;
+}
+
 /* Caption text */
 .text {
     color: #f2f2f2;
@@ -256,5 +341,3 @@ h5{
     text-align: left;
     padding-left: 40px;
 }
-
-
