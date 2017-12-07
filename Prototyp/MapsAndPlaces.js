@@ -33,15 +33,18 @@ function initMap() {
 
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
+        navigator.geolocation.getCurrentPosition(function(position) {
             pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
             marker.setPosition(pos);
+            //marker.setPosition(pos);
             map.setCenter(pos);
 
-        }, function () {
+//                getPlaces('gas_station');
+
+        }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
         });
     } else {
@@ -170,14 +173,14 @@ function addMarker(place) {
                     price = "Very Expensive";
                     break;
                 default:
-                    price = "  "; 
+                    price = "  ";
             }
 
             var marker_selected = result.geometry.location;
 
             var datails = '<div class="info_container"> <b>' + result.name + '</b></br>' +
                 result.formatted_address + '</br>' +
-                result.formatted_phone_number + '</br>' + open + '</br>' + price + '</br>' + 
+                result.formatted_phone_number + '</br>' + open + '</br>' + price + '</br>' +
                 '<button onclick="calcRoute()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"> Weg zeigen </button></div>';
 
             infoWindow.setContent(datails);
@@ -187,7 +190,7 @@ function addMarker(place) {
     });
     });
 
-}
+
 function clearMarkers() {
     setMapOnAll(null);
 }
@@ -250,10 +253,10 @@ function fillContainer(id)
 
 }
 function addBorder(iconId) {
-    document.getElementById(iconId).classList.add("border_active");
-    console.log(iconId);
-    document.getElementById("myDropdown").classList.toggle("show");
 
+    document.getElementById(iconId).classList.toggle("border_active");
+
+    console.log(iconId);
 
 
 }
