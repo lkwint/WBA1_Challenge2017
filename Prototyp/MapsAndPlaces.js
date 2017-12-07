@@ -89,6 +89,10 @@ function getPlaces(type) {
 function clear_and_getPlaces(type) {
     deleteMarkers();
     getPlaces(type);
+    clearDirections();
+}
+function clearDirections(){
+    directionsDisplay.set('directions', null);
 }
 function callback(results, status) {
     if (status !== google.maps.places.PlacesServiceStatus.OK) {
@@ -103,14 +107,29 @@ function callback(results, status) {
 
 function addMarker(place) {
     var marker = new google.maps.Marker({
-        map: map,
-        position: place.geometry.location,
-        icon: {
-            url: 'https://developers.google.com/maps/documentation/javascript/images/circle.png',
-            anchor: new google.maps.Point(10, 10),
-            scaledSize: new google.maps.Size(10, 17)
-        }
-    });
+
+    var icon = null;
+    // types array contains restaurant ?
+    if(place.types.indexOf('restaurant') >= 0){
+        icon = '<span class="map-icon map-icon-restaurant"></span>';
+    }
+    if(place.types.indexOf('pharmacy') >= 0){
+        icon = '<span class="map-icon map-icon-health"></span>';
+    }
+    if(place.types.indexOf('gas_station') >= 0){
+        icon = '<span class="map-icon map-icon-gas-station"></span>';
+    }
+    if(place.types.indexOf('atm') >= 0){
+        icon = '<span class="map-icon map-icon-atm"></span>';
+    }
+    if(place.types.indexOf('shopping_mall') >= 0){
+        icon = '<span class="map-icon map-icon-shopping-mall"></span>';
+    }
+    if(place.types.indexOf('post_office') >= 0){
+        icon = '<span class="map-icon map-icon-post-office"></span>';
+    }
+
+
     markers.push(marker);
 
     // TODO update marker information
@@ -118,43 +137,54 @@ function addMarker(place) {
 
     google.maps.event.addListener(marker, 'click', function () {
 
-        // get markerInfo from array
         var markerInfo = placesType.find(function (value) {
             return value.marker === marker;
         });
 
-        var result = markerInfo.markerInfo;
+    google.maps.event.addListener(marker, 'click', function() {
+        service.getDetails(place, function(result, status) {
+            if (status !== google.maps.places.PlacesServiceStatus.OK) {
+                console.error(status);
+                return;
+            }
 
-        var open = "Closed";
-        if (result.opening_hours.open_now)
-            open = "Open";
+            var open = "Closed";
+            if (result.opening_hours.open_now)
+                open = "Open";
 
-        var price;
-        switch (result.price_level) {
-            case 0:
-                price = "Free";
-                break;
-            case 1:
-                price = "Inexpensive";
-                break;
-            case 2:
-                price = "Moderate";
-                break;
-            case 3:
-                price = "Expensive";
-                break;
-            case 4:
-                price = "Very Expensive";
-                break;
-        }
+            var price;
+            switch(result.price_level) {
+                case 0:
+                    price = "Free";
+                    break;
+                case 1:
+                    price = "Inexpensive";
+                    break;
+                case 2:
+                    price = "Moderate";
+                    break;
+                case 3:
+                    price = "Expensive";
+                    break;
+                case 4:
+                    price = "Very Expensive";
+                    break;
+                default:
+                    price = "  "; 
+            }
 
-        var datails = 'Name: ' + result.name + '</br>' +
-            'Address: ' + result.formatted_address + '</br>' +
-            'Phone Number: ' + result.formatted_phone_number + '</br>' + open + '</br>' + price;
+            var marker_selected = result.geometry.location;
 
-        infoWindow.setContent(datails);
-        infoWindow.open(map, marker);
-        selectedMarkerPosition = result.geometry.location;
+            var datails = '<div class="info_container"> <b>' + result.name + '</b></br>' +
+                result.formatted_address + '</br>' +
+                result.formatted_phone_number + '</br>' + open + '</br>' + price + '</br>' + 
+                '<button onclick="calcRoute()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"> Weg zeigen </button></div>';
+
+            infoWindow.setContent(datails);
+            infoWindow.open(map, marker);
+            selectedMarkerPosition = result.geometry.location;
+
+    });
     });
 
 }

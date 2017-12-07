@@ -60,3 +60,7 @@ html, body {
 .datalist {
     width: 50%;
 }
+
+.info_container {
+    justify-content: center;
+}
